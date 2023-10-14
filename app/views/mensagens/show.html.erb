@@ -1,0 +1,24 @@
+<% if notice.present? %>
+       <div id="notice" class="alert alert-success" role="alert">
+         <%= notice %>
+       </div>
+     <% end %>
+
+     <div class="float-md-right btn-group">
+       <%= link_to 'Voltar', mensagens_path, class: 'btn btn-secondary' %>
+       <%= link_to 'Editar', edit_mensagem_path(@mensagem), class: 'btn btn-secondary' %>
+       <%= button_to 'Excluir', @mensagem, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-secondary' %>
+     </div>
+
+     <h1>Detalhar Mensagem</h1>
+     <div class="card">
+       <div class="card-header">
+         <h5><%= @mensagem.titulo %></h5>
+       </div>
+       <div class="card-body">
+         <%= @mensagem.corpo %>
+       </div>
+       <div class="card-footer">
+         <small>Enviada por <%= mail_to @mensagem.email, @mensagem.autor %> em <%= @mensagem.created_at.strftime("%d/%m/%Y") %></small>
+       </div>
+     </div>
